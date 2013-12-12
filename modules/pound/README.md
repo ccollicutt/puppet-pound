@@ -26,8 +26,7 @@ Installs, configures and starts Pound.
 
 ###Beginning with pound
 
-include '::pound' is enough to get you up and running.  If you wish to pass in
-parameters like which servers to use then you can use:
+include '::pound' is enough to get you up and running. Or:
 
 ```puppet
 class { '::pound':
