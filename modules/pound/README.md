@@ -144,7 +144,7 @@ The module has only been tested on:
 
 ##Development
 
-Please lodge issues and sennd pull requests to the [github repository](https://github.com/curtisgithub/puppet-pound).
+Please lodge issues and send pull requests to the [github repository](https://github.com/curtisgithub/puppet-pound).
 
 ##Thanks
 
