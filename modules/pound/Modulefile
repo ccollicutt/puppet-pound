@@ -1,0 +1,10 @@
+name    'serverascode-pound'
+version '0.1.0'
+source 'https://github.com/curtisgithub/puppet-pound'
+author 'curtis@serverascode.com'
+license 'GPL V3'
+summary 'Pound Module'
+description 'Pound Module for Debian, Ubuntu, CentOS, RHEL'
+project_page 'https://github.com/curtisgithub/puppet-pound'
+
+dependency 'puppetlabs/stdlib', '>= 0.1.6'

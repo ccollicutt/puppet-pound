@@ -1,17 +1,25 @@
 # vi: set ft=ruby :
 
 nodes = {
-    'pound' => [1, 20],
+    'ubuntu-pound' => [1, 20],
+    'centos-pound' => [1, 30]
 }
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "precise64"
-    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-    #config.vm.provision :shell, :path => 'puppet.sh'
-    config.vm.provision :shell, :path => 'apt-cacher-ng.sh'
 
     nodes.each do |prefix, (count, ip_start)|
         count.times do |i|
+
+            #
+            # Box
+            # - note: will not be used, but is required here 
+
+            config.vm.box = "precise64"
+
+            #
+            # hostname
+            # 
+
             hostname = "%s-%02d" % [prefix, (i+1)]
 
             config.vm.provider :virtualbox do |v|
@@ -25,13 +33,23 @@ Vagrant.configure("2") do |config|
             #    puppet.options = "--user vagrant"
             #end
 
-            config.vm.provision :shell do |shell|
-                shell.inline = "mkdir -p /etc/puppet/modules;
-                                puppet module install puppetlabs/stdlib"
-            end
-
             config.vm.define "#{hostname}" do |box|
                 puts "working on #{hostname} with ip of 192.168.20.#{ip_start+i}"
+
+                if prefix.include? 'ubuntu'
+                    config.vm.box = "precise64"
+                    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+                    config.vm.provision :shell, :path => 'ubuntu.sh'
+                elsif prefix.include? 'centos'
+                    config.vm.box = "centos64"
+                    config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box" 
+                    config.vm.provision :shell, :path => 'centos.sh'
+                end
+
+                #config.vm.provision :shell do |shell|
+                #    shell.inline = "mkdir -p /etc/puppet/modules;
+                #                    puppet module install puppetlabs/stdlib"
+                #end
             
                 box.vm.hostname = "#{hostname}.example.com"
 

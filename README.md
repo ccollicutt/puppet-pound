@@ -11,3 +11,5 @@ Then:
 ```
 $ vagrant up
 ```
+
+and a Ubuntu 12.04 Vagrant box will be booted and configured with pound.
