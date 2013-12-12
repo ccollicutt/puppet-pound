@@ -1,5 +1,5 @@
 name    'serverascode-pound'
-version '0.1.0'
+version '0.1.1'
 source 'https://github.com/curtisgithub/puppet-pound'
 author 'curtis@serverascode.com'
 license 'GPL V3'
