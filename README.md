@@ -1,6 +1,6 @@
 #puppet-pound
 
-Deploy "Pound":http://www.apsis.ch/pound with Puppet.
+Deploy [Pound](http://www.apsis.ch/pound) with Puppet.
 
 ##tl;dr
 
