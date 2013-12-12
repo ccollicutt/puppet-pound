@@ -1,7 +1,7 @@
 #
 class pound::config inherits pound {
 
-  if $::osfamily == 'debian' {
+  if $::osfamily == 'Debian' {
     file_line { '/etc/default/pound':
       path  => '/etc/default/pound',
       line  => 'startup=1',

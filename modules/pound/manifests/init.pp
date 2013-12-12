@@ -14,6 +14,7 @@ class pound (
   $listen_http_port    = $pound::params::listen_http_port,
   $backend_address     = $pound::params::backend_address,
   $backend_port        = $pound::params::backend_port,
+  $log_level           = $pound::params::log_level,
 
 ) inherits pound::params {
 

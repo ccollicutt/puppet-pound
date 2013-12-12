@@ -11,6 +11,8 @@
 4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
+7. [Todo](#todo)
+8. [Thanks](#thanks)
 
 ##Module Description
 
@@ -132,6 +134,10 @@ Set what address to send traffic to.
 
 Set what port to send traffic to.
 
+####`log_level`
+
+Set what level of logging pound should do.
+
 ##Limitations
 
 Currently there is no testing of the module.
@@ -140,6 +146,13 @@ The module has only been tested on:
 
 * CentOS 6
 * Ubuntu 12.04
+
+##TODO
+
+* Testing should be brought in
+* Support more operating systems
+* Should be able to have multiple backend IPs
+* Add ssl support
 
 ##Development
 
