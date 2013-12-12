@@ -2,27 +2,19 @@
 
 ####Table of Contents
 
-1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with pound](#setup)
+1. [Module Description - What the module does and why it is useful](#module-description)
+2. [Setup - The basics of getting started with pound](#setup)
     * [What pound affects](#what-pound-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning with pound](#beginning-with-pound)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+3. [Usage - Configuration options and additional functionality](#usage)
+4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
-##Overview
-
-The Pound module installs, configures, and manages the pound service.
-
 ##Module Description
 
-The Pound module handles running Pound across a range of operating systems and
-distributions.  Where possible we use the upstream pound templates so that the
-results closely match what you'd get if you modified the package default conf
-files.
+Installs, configures and starts Pound.
 
 ##Setup
 
@@ -39,7 +31,6 @@ parameters like which servers to use then you can use:
 
 ```puppet
 class { '::pound':
-
 }
 ```
 
@@ -118,9 +109,33 @@ This selects if puppet should manage the service in the first place.
 
 This selects the name of the pound service for puppet to manage.
 
+####`pound_user`
+
+Set what user to run the pound service as.
+
+####`pound_group`
+
+Set what group to run the pound service as.
+
+####`listen_http_address`
+
+Set what address to listen for http on.
+
+####`listen_http_port`
+
+Set what port to listen for http on.
+
+####`backend_address`
+
+Set what address to send traffic to.
+
+####`backend_port`
+
+Set what port to send traffic to.
+
 ##Limitations
 
-Currently there is no testing.
+Currently there is no testing of the module.
 
 The module has only been tested on:
 
