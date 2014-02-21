@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
             # Box
             # - note: will not be used, but is required here 
 
-            config.vm.box = "precise64"
+            config.vm.box = "precise32"
 
             #
             # hostname
@@ -26,23 +26,18 @@ Vagrant.configure("2") do |config|
                 v.customize ["modifyvm", :id, "--memory", 1024]
             end
 
-            #config.vm.provision :puppet do |puppet|
-            #    puppet.manifests_path = "manifests"
-            #    puppet.module_path = "modules"
-            #    puppet.manifest_file = "site.pp"
-            #    puppet.options = "--user vagrant"
-            #end
-
             config.vm.define "#{hostname}" do |box|
                 puts "working on #{hostname} with ip of 192.168.20.#{ip_start+i}"
 
                 if prefix.include? 'ubuntu'
-                    config.vm.box = "precise64"
-                    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+                    config.vm.box = "precise64-puppet"
+                    #config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+                    config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box"
                     config.vm.provision :shell, :path => 'ubuntu.sh'
                 elsif prefix.include? 'centos'
-                    config.vm.box = "centos64"
-                    config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box" 
+                    config.vm.box = "centos64-puppet"
+                    #config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box" 
+                    config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-65-x64-virtualbox-puppet.box"
                     config.vm.provision :shell, :path => 'centos.sh'
                 end
 
@@ -51,12 +46,22 @@ Vagrant.configure("2") do |config|
                 #                    puppet module install puppetlabs/stdlib"
                 #end
             
+                config.vm.provision :puppet do |puppet|
+                    puppet.manifests_path = "manifests"
+                    #puppet.module_path = ""
+                    puppet.manifest_file = "site.pp"
+                    puppet.options = "--user vagrant --modulepath=/vagrant/modules:/etc/puppet/modules"
+                end
+
                 box.vm.hostname = "#{hostname}.example.com"
 
                 # Public
                 box.vm.network :private_network, :ip => "192.168.20.#{ip_start+i}", :netmask => "255.255.255.0" 
 
             end
+
+
+
         end
     end
 end

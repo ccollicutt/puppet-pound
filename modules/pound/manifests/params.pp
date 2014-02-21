@@ -1,18 +1,14 @@
 class pound::params {
 
-  $autoupdate          = false
-  $config_template     = 'pound/pound.cfg.erb'
-  $package_ensure      = 'present'
-  $service_enable      = true
-  $service_ensure      = 'running'
-  $service_manage      = true
-
+  $autoupdate           = false
+  $config_template      = 'pound/pound.cfg.erb'
+  $package_ensure       = 'present'
+  $service_enable       = true
+  $service_ensure       = 'running'
+  $service_manage       = true
   $listen_http_address  = '127.0.0.1'
   $listen_http_port     = '8080'
-  #$listen_https_address = '127.0.0.1'
-  #$listen_https_port    = '8443'
-  $backend_address      = '127.0.0.1'
-  $backend_port         = '80'
+  $backend_servers      = { '127.0.0.1' => '80' }
   $log_level            = '1'
 
   case $::osfamily {

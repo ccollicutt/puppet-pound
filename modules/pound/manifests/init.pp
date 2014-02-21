@@ -12,8 +12,7 @@ class pound (
   $pound_user          = $pound::params::pound_user,
   $listen_http_address = $pound::params::listen_http_address,
   $listen_http_port    = $pound::params::listen_http_port,
-  $backend_address     = $pound::params::backend_address,
-  $backend_port        = $pound::params::backend_port,
+  $backend_servers     = $pound::params::backend_servers,
   $log_level           = $pound::params::log_level,
 
 ) inherits pound::params {
@@ -30,9 +29,7 @@ class pound (
   validate_string($pound_group)
   validate_string($listen_http_address)
   validate_string($listen_http_port)
-  validate_string($backend_address)
-  validate_string($backend_port)
-
+  validate_hash($backend_servers)
 
   anchor { 'pound::begin': } ->
   class { '::pound::install': } ->

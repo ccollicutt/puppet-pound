@@ -126,13 +126,9 @@ Set what address to listen for http on.
 
 Set what port to listen for http on.
 
-####`backend_address`
+####`backend_servers`
 
-Set what address to send traffic to.
-
-####`backend_port`
-
-Set what port to send traffic to.
+A hash of IP or servername and the port.
 
 ####`log_level`
 
@@ -147,11 +143,14 @@ The module has only been tested on:
 * CentOS 6
 * Ubuntu 12.04
 
+## Release notes
+
+* 0.1.2 - Changed from backend_ports and backed_addresses to a hash in the variable backend_servers, and the pound.cfg template will loop through them
+
 ##TODO
 
 * Testing should be brought in
 * Support more operating systems
-* Should be able to have multiple backend IPs
 * Add ssl support
 
 ##Development

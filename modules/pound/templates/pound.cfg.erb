@@ -1,18 +1,16 @@
 User		"<%= @pound_user %>"
 Group		"<%= @pound_group %>"
-
 LogLevel	<%= @log_level %>
-
-Control "<%= @control_socket %>"
+Control 	"<%= @control_socket %>"
 
 ListenHTTP
 	Address <%= @listen_http_address %>
 	Port	<%= @listen_http_port %>
-
-	Service
+	Service <% @backend_servers.each do |ip, port| %>
 		BackEnd
-			Address	<%= @backend_address %>
-			Port	<%= @backend_port %>
+			Address	<%= ip %>
+			Port    <%= port %>
 		End
+		<% end %>
 	End
 End
