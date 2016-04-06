@@ -20,7 +20,6 @@ class pound (
   validate_absolute_path($config)
   validate_string($config_template)
   validate_string($package_ensure)
-  validate_array($package_name)
   validate_bool($service_enable)
   validate_string($service_ensure)
   validate_bool($service_manage)
